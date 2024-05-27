@@ -8,7 +8,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.DialogProperties
 import java.time.Instant
 import java.time.LocalDate
@@ -20,7 +19,6 @@ import java.time.ZoneId
 fun TaskDatePicker(
     state: DatePickerState,
     isOpen: Boolean,
-    modifier: Modifier = Modifier,
     confirmButtonText: String = "OK",
     dismissButtonText: String = "Cancel",
     onDismissRequest: () -> Unit,

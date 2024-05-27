@@ -1,7 +1,5 @@
 package com.infitelearning.development.infiniteschedule.presentation.home
 
-import android.app.Application
-import android.content.Context
 import android.os.Build
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -30,12 +28,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.infitelearning.development.infiniteschedule.R
 import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEntity

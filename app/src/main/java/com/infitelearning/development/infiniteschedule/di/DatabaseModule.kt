@@ -1,6 +1,5 @@
 package com.infitelearning.development.infiniteschedule.di
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.infitelearning.development.infiniteschedule.data.local.room.TaskDatabase
