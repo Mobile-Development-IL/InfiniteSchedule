@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -39,20 +41,16 @@ import com.infitelearning.development.infiniteschedule.R
 import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEntity
 import com.infitelearning.development.infiniteschedule.presentation.navigation.Screen
 import com.infitelearning.development.infiniteschedule.utils.Converter.changeMillisToDateString
-import com.infitelearning.development.infiniteschedule.utils.ViewModelFactory
 import com.rahmadev.storage.presentation.component.TaskCard
 
 @Composable
 fun HomeScreen(
     navController: NavController,
     modifier: Modifier = Modifier,
-    context: Context = LocalContext.current,
     isDarkMode: Boolean = isSystemInDarkTheme(),
     listState: LazyListState = rememberLazyListState(),
+    homeViewModel: HomeViewModel = hiltViewModel()
 ) {
-    val homeViewModel: HomeViewModel = viewModel(
-        factory = ViewModelFactory.getInstance(context.applicationContext as Application)
-    )
     val state by homeViewModel.state.collectAsStateWithLifecycle()
     val isFABExpanded by remember { derivedStateOf { listState.firstVisibleItemIndex == 0 } }
 
@@ -117,6 +115,7 @@ fun HomeContent(
         else
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = modifier.padding(contentPadding)
             ) {
                 items(tasks, key = { it.taskId ?: 0 }) {

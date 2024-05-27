@@ -4,22 +4,13 @@ import com.infitelearning.development.infiniteschedule.data.local.LocalDataSourc
 import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEntity
 import com.infitelearning.development.infiniteschedule.domain.repository.TaskRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class TaskRepositoryImpl private constructor(
+@Singleton
+class TaskRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource
-): TaskRepository {
-
-    companion object {
-        @Volatile
-        private var instance: TaskRepositoryImpl? = null
-
-        fun getInstance(
-            localData: LocalDataSource,
-        ): TaskRepositoryImpl =
-            instance ?: synchronized(this) {
-                instance ?: TaskRepositoryImpl(localData)
-            }
-    }
+) : TaskRepository {
 
     override suspend fun upsertTask(taskEntity: TaskEntity) = localDataSource.upsertTask(taskEntity)
 

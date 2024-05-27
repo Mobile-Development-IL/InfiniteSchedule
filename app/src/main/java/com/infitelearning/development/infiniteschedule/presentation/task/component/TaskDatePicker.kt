@@ -1,7 +1,6 @@
 package com.infitelearning.development.infiniteschedule.presentation.task.component
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.DatePickerState

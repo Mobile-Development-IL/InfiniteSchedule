@@ -31,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -38,7 +39,6 @@ import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEnt
 import com.infitelearning.development.infiniteschedule.presentation.task.component.TaskDatePicker
 import com.infitelearning.development.infiniteschedule.presentation.task.component.TopAppBarTask
 import com.infitelearning.development.infiniteschedule.utils.Converter.changeMillisToDateString
-import com.infitelearning.development.infiniteschedule.utils.ViewModelFactory
 import java.time.Instant
 
 @SuppressLint("NewApi")
@@ -48,10 +48,9 @@ fun TaskScreen(
     id: Int,
     navController: NavController,
     modifier: Modifier = Modifier,
-    context: Context = LocalContext.current
+    context: Context = LocalContext.current,
+    taskViewModel: TaskViewModel = hiltViewModel()
 ) {
-    val taskViewModel: TaskViewModel =
-        viewModel(factory = ViewModelFactory.getInstance(context = context))
     val state by taskViewModel.state.collectAsStateWithLifecycle()
 
     val datePickerState = rememberDatePickerState(

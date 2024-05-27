@@ -1,16 +1,18 @@
 package com.infitelearning.development.infiniteschedule.presentation.task
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEntity
 import com.infitelearning.development.infiniteschedule.domain.repository.TaskRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TaskViewModel(
+@HiltViewModel
+class TaskViewModel @Inject constructor(
     private val taskRepository: TaskRepository
 ) : ViewModel() {
 
