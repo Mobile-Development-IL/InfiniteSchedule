@@ -1,6 +1,5 @@
 package com.infitelearning.development.infiniteschedule.presentation.home
 
-import android.app.Application
 import android.content.Context
 import android.os.Build
 import androidx.compose.foundation.Image
