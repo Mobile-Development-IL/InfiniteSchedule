@@ -21,7 +21,6 @@ import java.time.ZoneId
 fun TaskDatePicker(
     state: DatePickerState,
     isOpen: Boolean,
-    modifier: Modifier = Modifier,
     confirmButtonText: String = "OK",
     dismissButtonText: String = "Cancel",
     onDismissRequest: () -> Unit,
