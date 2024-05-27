@@ -1,10 +1,9 @@
-package com.infitelearning.development.infiniteschedule.domain.repository
+package com.infitelearning.development.infiniteschedule.domain.usecase
 
 import com.infitelearning.development.infiniteschedule.domain.model.Task
 import kotlinx.coroutines.flow.Flow
 
-interface TaskRepository {
-
+interface TaskUseCase {
     suspend fun upsertTask(task: Task)
 
     suspend fun deleteTask(taskId: Int)

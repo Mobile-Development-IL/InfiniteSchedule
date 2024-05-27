@@ -1,7 +1,5 @@
 package com.infitelearning.development.infiniteschedule.presentation.task
 
-import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEntity
-
 data class TaskState(
     val title: String = "",
     val description: String = "",

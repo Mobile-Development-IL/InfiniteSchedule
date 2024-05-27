@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEntity
+import com.infitelearning.development.infiniteschedule.domain.model.Task
 import com.infitelearning.development.infiniteschedule.presentation.task.component.TaskDatePicker
 import com.infitelearning.development.infiniteschedule.presentation.task.component.TopAppBarTask
 import com.infitelearning.development.infiniteschedule.utils.Converter.changeMillisToDateString
@@ -84,7 +84,7 @@ fun TaskScreen(
         dueDate = state.dueDate,
         isDatePickerDialogOpen = { taskViewModel.isDatePickerDialogOpen() },
         onSaveClick = {
-            val task = TaskEntity(
+            val task = Task(
                 taskId = state.currentTaskId,
                 title = state.title,
                 description = state.description,
@@ -94,7 +94,7 @@ fun TaskScreen(
             )
 
             if (state.title.isNotEmpty() && state.description.isNotEmpty() && state.dueDate != null && state.source.isNotEmpty() && state.location.isNotEmpty()) {
-                taskViewModel.saveTask(task)
+                taskViewModel.saveTask((task))
                 navController.navigateUp()
             } else
                 Toast.makeText(context, "All fields are required", Toast.LENGTH_SHORT).show()

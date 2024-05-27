@@ -2,8 +2,8 @@ package com.infitelearning.development.infiniteschedule.presentation.task
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEntity
-import com.infitelearning.development.infiniteschedule.domain.repository.TaskRepository
+import com.infitelearning.development.infiniteschedule.domain.model.Task
+import com.infitelearning.development.infiniteschedule.domain.usecase.TaskUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TaskViewModel @Inject constructor(
-    private val taskRepository: TaskRepository
+    private val taskUseCase: TaskUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(TaskState())
@@ -55,18 +55,18 @@ class TaskViewModel @Inject constructor(
         }
     }
 
-    fun saveTask(taskEntity: TaskEntity) = viewModelScope.launch {
-        taskRepository.upsertTask(
-            taskEntity = taskEntity
+    fun saveTask(task: Task) = viewModelScope.launch {
+        taskUseCase.upsertTask(
+            task = task
         )
     }
 
     fun deleteTask(taskId: Int) = viewModelScope.launch {
-        taskRepository.deleteTask(taskId)
+        taskUseCase.deleteTask(taskId)
     }
 
     private fun fetchTask(taskId: Int) = viewModelScope.launch {
-        taskRepository.getTaskById(taskId).collect { task ->
+        taskUseCase.getTaskById(taskId).collect { task ->
             _state.update {
                 it.copy(
                     currentTaskId = task?.taskId,

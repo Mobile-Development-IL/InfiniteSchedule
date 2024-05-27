@@ -34,7 +34,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.infitelearning.development.infiniteschedule.R
-import com.infitelearning.development.infiniteschedule.data.local.entity.TaskEntity
+import com.infitelearning.development.infiniteschedule.domain.model.Task
 import com.infitelearning.development.infiniteschedule.presentation.navigation.Screen
 import com.infitelearning.development.infiniteschedule.utils.Converter.changeMillisToDateString
 import com.rahmadev.storage.presentation.component.TaskCard
@@ -65,7 +65,7 @@ fun HomeScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeContent(
-    tasks: List<TaskEntity>,
+    tasks: List<Task>,
     isDarkMode: Boolean,
     isFABExpanded: Boolean,
     navController: NavController,

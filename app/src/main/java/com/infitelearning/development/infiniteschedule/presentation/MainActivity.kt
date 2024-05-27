@@ -1,4 +1,4 @@
-package com.infitelearning.development.infiniteschedule
+package com.infitelearning.development.infiniteschedule.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.infitelearning.development.infiniteschedule.presentation.InfiniteScheduleApp
 import com.infitelearning.development.infiniteschedule.ui.theme.InfiniteScheduleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
