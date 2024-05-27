@@ -52,7 +52,7 @@ fun HomeScreen(
     listState: LazyListState = rememberLazyListState(),
 ) {
     val homeViewModel: HomeViewModel = viewModel(
-        factory = ViewModelFactory.getInstance(context.applicationContext as Application)
+        factory = ViewModelFactory.getInstance(context)
     )
     val state by homeViewModel.state.collectAsStateWithLifecycle()
     val isFABExpanded by remember { derivedStateOf { listState.firstVisibleItemIndex == 0 } }
