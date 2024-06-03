@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.infitelearning.development.infiniteschedule.presentation.home.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -87,4 +87,9 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     ksp(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    // testing
+    androidTestImplementation ("androidx.navigation:navigation-testing:2.5.3")
+    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.49")
+    kspAndroidTest ("com.google.dagger:hilt-android-compiler:2.49")
 }

@@ -23,13 +23,18 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -147,14 +152,16 @@ fun TaskContent(
                 onValueChange = onTitleChange,
                 label = { Text(text = "Title") },
                 singleLine = true,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    .testTag("title_input"),
             )
             Spacer(modifier = Modifier.height(8.dp))
             OutlinedTextField(
                 value = description,
                 onValueChange = onDescriptionChange,
                 label = { Text(text = "Description") },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    .testTag("description_input"),
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
@@ -173,7 +180,8 @@ fun TaskContent(
                 IconButton(onClick = isDatePickerDialogOpen) {
                     Icon(
                         imageVector = Icons.Default.DateRange,
-                        contentDescription = "Select Due Date"
+                        contentDescription = "Select Due Date",
+                        modifier = Modifier.testTag("date_input")
                     )
                 }
             }
@@ -182,14 +190,16 @@ fun TaskContent(
                 value = source,
                 onValueChange = onSourceChange,
                 label = { Text(text = "Link Source") },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    .testTag("source"),
             )
             Spacer(modifier = Modifier.height(8.dp))
             OutlinedTextField(
                 value = location,
                 onValueChange = onLocationChange,
                 label = { Text(text = "Location") },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    .testTag("location"),
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(

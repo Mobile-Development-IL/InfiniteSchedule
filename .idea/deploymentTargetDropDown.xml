@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="deploymentTargetDropDown">
+    <value>
+      <entry key="HomeScreenKtTest">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
+      <entry key="navHost_addTaskData()">
+        <State />
+      </entry>
+      <entry key="navHost_deleteTask()">
+        <State />
+      </entry>
+      <entry key="navHost_detailTask()">
+        <State />
+      </entry>
+      <entry key="navHost_navigateToAddTask()">
+        <State />
+      </entry>
+    </value>
+  </component>
+</project>
