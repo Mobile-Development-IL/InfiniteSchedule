@@ -57,9 +57,8 @@ class HomeScreenKtTest{
 
     @Test
     fun navHost_addTaskData(){
+        navHost_navigateToAddTask()
         composeTestRule.run {
-            composeTestRule.onNodeWithContentDescription("Add").performClick()
-            navController.assertCurrentRouteName(Screen.Task.route)
             onNodeWithTag("title_input").performTextInput("Rahmad")
             onNodeWithTag("description_input").performTextInput("Rahmad and reza")
             onNodeWithContentDescription("Select Due Date").performClick()
@@ -73,17 +72,8 @@ class HomeScreenKtTest{
 
     @Test
     fun navHost_detailTask(){
+        navHost_addTaskData()
         composeTestRule.run {
-            composeTestRule.onNodeWithContentDescription("Add").performClick()
-            navController.assertCurrentRouteName(Screen.Task.route)
-            onNodeWithTag("title_input").performTextInput("Rahmad")
-            onNodeWithTag("description_input").performTextInput("Rahmad and reza")
-            onNodeWithContentDescription("Select Due Date").performClick()
-            onNodeWithTag("date_input").performClick()
-            onNodeWithText("OK").performClick()
-            onNodeWithTag("source").performTextInput("https://Google.com")
-            onNodeWithTag("location").performTextInput("rusun")
-            onNodeWithText("Save").performClick()
             navController.assertCurrentRouteName(Screen.Home.route)
             onNodeWithText("Rahmad").performClick()
             onNodeWithText("Rahmad").assertIsDisplayed()
@@ -94,21 +84,8 @@ class HomeScreenKtTest{
 
     @Test
     fun navHost_deleteTask(){
+        navHost_detailTask()
         composeTestRule.run {
-            composeTestRule.onNodeWithContentDescription("Add").performClick()
-            navController.assertCurrentRouteName(Screen.Task.route)
-            onNodeWithTag("title_input").performTextInput("Rahmad")
-            onNodeWithTag("description_input").performTextInput("Rahmad and reza")
-            onNodeWithContentDescription("Select Due Date").performClick()
-            onNodeWithTag("date_input").performClick()
-            onNodeWithText("OK").performClick()
-            onNodeWithTag("source").performTextInput("https://Google.com")
-            onNodeWithTag("location").performTextInput("rusun")
-            onNodeWithText("Save").performClick()
-            navController.assertCurrentRouteName(Screen.Home.route)
-            onNodeWithText("Rahmad").performClick()
-            onNodeWithText("Rahmad").assertIsDisplayed()
-            onNodeWithText("Rahmad and reza").assertIsDisplayed()
             onNodeWithText("https://Google.com").assertIsDisplayed()
             onNodeWithContentDescription("Delete Task").performClick()
             onNodeWithText("Rahmad").assertDoesNotExist()
