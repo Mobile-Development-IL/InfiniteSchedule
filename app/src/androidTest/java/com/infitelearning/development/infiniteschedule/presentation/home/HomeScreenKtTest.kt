@@ -3,13 +3,13 @@ package com.infitelearning.development.infiniteschedule.presentation.home
 import androidx.activity.compose.setContent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
+import androidx.compose.ui.test.performTextReplacement
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.infitelearning.development.infiniteschedule.presentation.InfiniteScheduleApp
@@ -89,6 +89,17 @@ class HomeScreenKtTest{
             onNodeWithText("https://Google.com").assertIsDisplayed()
             onNodeWithContentDescription("Delete Task").performClick()
             onNodeWithText("Rahmad").assertDoesNotExist()
+        }
+    }
+
+    @Test
+    fun navHost_updateTask(){
+        navHost_detailTask()
+        composeTestRule.run {
+            onNodeWithTag("title_input").performTextReplacement("Lorem ipsum")
+            onNodeWithTag("description_input").performTextReplacement("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+            onNodeWithText("Save").performClick()
+            onNodeWithText("Lorem ipsum").assertIsDisplayed()
         }
     }
 }

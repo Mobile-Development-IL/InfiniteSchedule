@@ -60,6 +60,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-564038201">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="flutter_emulator_2" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-194278259">
           <value>
             <AndroidTestResultsTableState>
